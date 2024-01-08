@@ -1,0 +1,95 @@
+/* Size for brand */
+nav .navbar-brand
+{
+    font-size: xx-large;
+}
+
+
+
+
+
+
+/* sliders */
+.slidecontainer {
+    width: 100%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 5px;
+    border-radius: 5px;
+    background: #333333;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #FF0000;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #FF0000;
+    cursor: pointer;
+}
+
+.custom-select {
+    text-align: left;
+}
+
+.custom-field {
+    padding: 0;           /* Reduces padding */
+    line-height: normal;  /* Adjusts line height */
+    min-height: 1em;
+}
+
+.input-with-text {
+    display: flex;    /* Use Flexbox */
+    align-items: center; /* Align items vertically */
+}
+
+.input-with-text input {
+    flex-grow: 0; /* Prevent input from growing */
+    margin-right: 5px; /* Optional: space between the input and text */
+}
+
+
+
+fieldset {
+    margin-bottom: 1em !important;
+    border: 1px solid #666 !important;
+    padding:1px !important;
+}
+
+legend {
+    padding: 1px 10px !important;
+    float:none;
+    width:auto;
+}
+
+input.form-control, textarea.form-control {
+    padding: 0;       /* Reduces padding */
+    line-height: normal; /* Adjusts line height */
+    min-height: 1em;  /* Minimum height */
+}
+
+textarea.auto-expand {
+    resize: none;    /* Disable resizing */
+    overflow-y: hidden; /* Hide vertical scrollbar */
+}
+

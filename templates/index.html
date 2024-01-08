@@ -1,0 +1,188 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+
+<form action="/" method="post">
+    <fieldset> <!-- air -->
+        <legend>air</legend>
+        <div class="mb-3 input-with-text"> <!-- temp -->
+            <input autocomplete="off"
+                class="form-control"
+                name="temp"
+                placeholder="temp"
+                type="number"
+                style="width: 23vw">
+            <span>°F</span>
+        </div>
+        <div class="mb-3 input-with-text"> <!-- wind speed -->
+            <input autocomplete="off" 
+                class="form-control"
+                name="wind_speed"
+                placeholder="wind speed"
+                type="number"
+                style="width: 23vw">
+            <span>mph</span>
+        </div>
+        <div class="mb-3"> <!-- wind direction -->
+            <select name="wind_direction" class="form-control w-auto custom-select">
+                <option value="" selected>wind direction</option>
+                <option value="E">E</option>
+                <option value="ESE">ESE</option>
+                <option value="SE">SE</option>
+                <option value="SSE">SSE</option>
+                <option value="S">S</option>
+                <option value="SSW">SSW</option>
+                <option value="SW">SW</option>
+                <option value="WSW">WSW</option>
+                <option value="W">W</option>
+                <option value="WNW">WNW</option>
+                <option value="NW">NW</option>
+                <option value="NNW">NNW</option>
+                <option value="N">N</option>
+                <option value="NNE">NNE</option>
+                <option value="NE">NE</option>
+                <option value="ENE">ENE</option>
+            </select>
+        </div>
+        <div class="mb-3"> <!-- air notes -->
+            <textarea autocomplete="off" 
+                class="form-control auto-expand"
+                name="air_notes"
+                placeholder="air notes"
+                rows="1"></textarea>
+        </div>
+    </fieldset>
+
+    <fieldset> <!-- water -->
+        <legend>water</legend>
+        <div class="mb-3"> <!-- humidity -->
+            # humidity Toggle
+            # humidity Slider
+
+        </div>
+        <div class="mb-3"> <!-- cloud coverage -->
+            # cloud_coverage Toggle
+            # cloud_coverage Slider
+
+        </div>
+        <div class="mb-3"> <!-- cloud speed -->
+            <select name="cloud_speed">
+                <option value="" selected>cloud speed</option>
+                <option value="still">still</option>
+                <option value="slow">slow</option>
+                <option value="med">med</option>
+                <option value="fast">fast</option>
+            </select>
+        </div>
+        <div class="mb-3"> <!-- cloud direction -->
+            <select name="cloud_direction">
+                <option value="" selected>cloud direction</option>
+                <option value="E">E</option>
+                <option value="ESE">ESE</option>
+                <option value="SE">SE</option>
+                <option value="SSE">SSE</option>
+                <option value="S">S</option>
+                <option value="SSW">SSW</option>
+                <option value="SW">SW</option>
+                <option value="WSW">WSW</option>
+                <option value="W">W</option>
+                <option value="WNW">WNW</option>
+                <option value="NW">NW</option>
+                <option value="NNW">NNW</option>
+                <option value="N">N</option>
+                <option value="NNE">NNE</option>
+                <option value="NE">NE</option>
+                <option value="ENE">ENE</option>
+            </select>
+        </div>
+        <div class="mb-3"> <!-- cloud altitude -->
+            <select name="cloud_altitude">
+                <option value="" selected>cloud altitude</option>
+                <option value="low">low</option>
+                <option value="med">med</option>
+                <option value="high">high</option>
+                <option value="very_high">very high</option>
+            </select>
+        </div>
+        <div class="mb-3"> <!-- precipitation -->
+            <select name="precipitation">
+                <option value="" selected>precipitation</option>
+                <option value="fog">fog</option>
+                <option value="rain_barely">rain (barely)</option>
+                <option value="rain_light">rain (light)</option>
+                <option value="rain_moderate">rain (moderate)</option>
+                <option value="rain_heavy">rain (heavy)</option>
+                <option value="sleet">sleet</option>
+                <option value="hail">hail</option>
+                <option value="snow_light">snow (light)</option>
+                <option value="snow_moderate">snow (moderate)</option>
+                <option value="snow_heavy">snow (heavy)</option>
+            </select>
+        </div>
+        <div class="mb-3"> <!-- water notes -->
+            <textarea autocomplete="off" 
+                class="form-control auto-expand"
+                name="water_notes"
+                placeholder="water notes"
+                rows="1"></textarea>
+        </div>
+    </fieldset>
+    
+    <fieldset> <!-- moon phase and bio notes -->
+        <div class="mb-3"> <!-- moon phase -->
+            # moon-phase Toggle
+            # moon_phase Slider
+
+        </div>
+        <div class="mb-3"> <!-- bio notes -->
+            <textarea autocomplete="off" 
+                class="form-control auto-expand"
+                name="bio_notes"
+                placeholder="bio notes"
+                rows="1"></textarea>
+        </div>
+    </fieldset>
+    <button class="btn btn-primary" type="submit">enter</button>
+</form>
+
+<!-- JavaScript at the bottom of the body -->
+<script>
+    const textarea = document.querySelector('textarea.auto-expand');
+    textarea.addEventListener('input', function() {
+        this.style.height = 'auto';
+        this.style.height = (this.scrollHeight) + 'px';
+    });
+</script>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+<!-- moonPhase slider -->
+<div class="slidecontainer"></div>
+    <label for="moonPhase">Moon Phase:</label>
+    <input type="range" id="moonPhase" name="moonPhase" min="1" max="28" value="1" class="slider">
+    <span id="moonPhaseValue">1</span>
+</div>
+
+
+<script>
+    const moonPhaseSlider = document.getElementById('moonPhase');
+    const moonPhaseValue = document.getElementById('moonPhaseValue');
+
+// Set the text content of the "moonPhaseValue" element to the value of the "moonPhaseSlider" input element
+    moonPhaseSlider.oninput = function() {
+        moonPhaseValue.textContent = this.value;
+    }
+</script>
