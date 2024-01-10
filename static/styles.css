@@ -6,6 +6,26 @@ nav .navbar-brand
 
 
 
+#moonPhaseRow {
+    display: flex;
+    align-items: center;
+}
+
+#moonLabel, #moonPhaseContainer {
+    margin-left: 10px; /* Adjust spacing as needed */
+}
+
+#moonPhaseContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+/* Ensure that the elements do not wrap */
+#moonPhaseRow, #moonPhaseContainer {
+    flex-wrap: nowrap;
+}
+
 
 
 
@@ -16,7 +36,7 @@ nav .navbar-brand
 
 .slider {
     -webkit-appearance: none;
-    width: 100%;
+    width: 90%;
     height: 5px;
     border-radius: 5px;
     background: #333333;
@@ -98,3 +118,5 @@ textarea.auto-expand {
     resize: none;    /* Disable resizing */
     overflow-y: hidden; /* Hide vertical scrollbar */
 }
+
+
