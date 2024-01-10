@@ -15,7 +15,7 @@
                 name="temp"
                 placeholder="temp"
                 type="number"
-                style="width: 23vw">
+                style="width: 34vw">
             <span>°F</span>
         </div>
         <div class="mb-3 input-with-text"> <!-- wind speed -->
@@ -24,12 +24,12 @@
                 name="wind_speed"
                 placeholder="wind speed"
                 type="number"
-                style="width: 23vw">
+                style="width: 34vw">
             <span>mph</span>
         </div>
-        <div class="mb-3"> <!-- wind direction -->
-            <select name="wind_direction" class="form-control w-auto custom-select">
-                <option value="" selected>wind direction</option>
+        <div class="mb-3 field-align-left"> <!-- wind direction -->
+            <select name="wind_direction" class="form-control">
+                <option value="" selected>wind direction ≡</option>
                 <option value="E">E</option>
                 <option value="ESE">ESE</option>
                 <option value="SE">SE</option>
@@ -69,18 +69,18 @@
             # cloud_coverage Slider
 
         </div>
-        <div class="mb-3"> <!-- cloud speed -->
-            <select name="cloud_speed">
-                <option value="" selected>cloud speed</option>
+        <div class="mb-3 field-align-left"> <!-- cloud speed -->
+            <select name="cloud_speed" class="form-control">
+                <option value="" selected>cloud speed ≡</option>
                 <option value="still">still</option>
                 <option value="slow">slow</option>
                 <option value="med">med</option>
                 <option value="fast">fast</option>
             </select>
         </div>
-        <div class="mb-3"> <!-- cloud direction -->
-            <select name="cloud_direction">
-                <option value="" selected>cloud direction</option>
+        <div class="mb-3 field-align-left"> <!-- cloud direction -->
+            <select name="cloud_direction" class="form-control">
+                <option value="" selected>cloud direction ≡</option>
                 <option value="E">E</option>
                 <option value="ESE">ESE</option>
                 <option value="SE">SE</option>
@@ -99,18 +99,18 @@
                 <option value="ENE">ENE</option>
             </select>
         </div>
-        <div class="mb-3"> <!-- cloud altitude -->
-            <select name="cloud_altitude">
-                <option value="" selected>cloud altitude</option>
+        <div class="mb-3 field-align-left"> <!-- cloud altitude -->
+            <select name="cloud_altitude" class="form-control">
+                <option value="" selected>cloud altitude ≡</option>
                 <option value="low">low</option>
                 <option value="med">med</option>
                 <option value="high">high</option>
                 <option value="very_high">very high</option>
             </select>
         </div>
-        <div class="mb-3"> <!-- precipitation -->
-            <select name="precipitation">
-                <option value="" selected>precipitation</option>
+        <div class="mb-3 field-align-left"> <!-- precipitation -->
+            <select name="precipitation" class="form-control">
+                <option value="" selected>precipitation ≡</option>
                 <option value="fog">fog</option>
                 <option value="rain_barely">rain (barely)</option>
                 <option value="rain_light">rain (light)</option>
@@ -134,8 +134,20 @@
     
     <fieldset> <!-- moon phase and bio notes -->
         <div class="mb-3"> <!-- moon phase -->
-            # moon-phase Toggle
-            # moon_phase Slider
+            <!-- moon_phase Toggle -->
+            <label>
+                <input type="checkbox" id="moonVisibleToggle">
+                moon
+            </label>
+        
+            <!-- moon_phase Slider -->
+            <div id="moonPhaseContainer" style="display: none;">
+                <input type="range" id="moonPhase" name="moonPhase" min="1" max="28" value="1" class="slider">
+                <span id="moonPhaseValue">1</span>
+            </div>
+
+
+            
 
         </div>
         <div class="mb-3"> <!-- bio notes -->
@@ -151,11 +163,34 @@
 
 <!-- JavaScript at the bottom of the body -->
 <script>
+    // Auto expand textarea for 'notes' fields
     const textarea = document.querySelector('textarea.auto-expand');
     textarea.addEventListener('input', function() {
         this.style.height = 'auto';
         this.style.height = (this.scrollHeight) + 'px';
     });
+
+    // Moon phase
+    const moonVisibleToggle = document.getElementById('moonVisibleToggle');
+    const moonPhaseContainer = document.getElementById('moonPhaseContainer');
+    const moonPhaseSlider = document.getElementById('moonPhase');
+    const moonPhaseValue = document.getElementById('moonPhaseValue');
+
+    moonVisibleToggle.addEventListener('change', function() {
+        if (this.checked) {
+            moonPhaseContainer.style.display = 'block';
+            moonPhaseSlider.disabled = false; // Enable the slider
+        } else {
+            moonPhaseContainer.style.display = 'none';
+            moonPhaseSlider.disabled = true; // Disable the slider
+            moonPhaseSlider.value = '1'; // Reset slider or set to default
+        }
+    });
+
+    moonPhaseSlider.oninput = function() {
+        moonPhaseValue.textContent = this.value;
+    }
+
 </script>
 
 {% endblock %}

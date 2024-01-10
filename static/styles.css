@@ -48,8 +48,16 @@ nav .navbar-brand
     cursor: pointer;
 }
 
-.custom-select {
+.field-align-left {
     text-align: left;
+}
+
+.field-align-left .form-control {
+    display: inline-block;
+    width: 34vw; /* Or set a specific width */
+    padding: 0;           /* Reduces padding */
+    line-height: normal;  /* Adjusts line height */
+    min-height: 1em;
 }
 
 .custom-field {
@@ -67,8 +75,6 @@ nav .navbar-brand
     flex-grow: 0; /* Prevent input from growing */
     margin-right: 5px; /* Optional: space between the input and text */
 }
-
-
 
 fieldset {
     margin-bottom: 1em !important;
@@ -92,4 +98,3 @@ textarea.auto-expand {
     resize: none;    /* Disable resizing */
     overflow-y: hidden; /* Hide vertical scrollbar */
 }
-
