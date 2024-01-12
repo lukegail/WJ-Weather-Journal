@@ -103,10 +103,18 @@
 }
 
 {   // 'notes' textarea auto expand
-    const textarea = document.querySelector('textarea.auto-expand');
-    textarea.addEventListener('input', function() {
-        this.style.height = 'auto';
-        this.style.height = (this.scrollHeight) + 'px';
+    document.addEventListener('DOMContentLoaded', function() {
+        const textareas = document.querySelectorAll('textarea.auto-expand');
+    
+        textareas.forEach(function(textarea) {
+            textarea.addEventListener('input', function() {
+                this.style.height = 'auto';
+                this.style.height = (this.scrollHeight + 2) + 'px'; // Add a small buffer
+            });
+    
+            // Trigger the input event to calculate initial height
+            textarea.dispatchEvent(new Event('input'));
+        });
     });
 }
 
