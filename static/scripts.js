@@ -36,7 +36,7 @@
 
     humidityVisibleToggle.addEventListener('change', function() {
         if (this.checked) {
-            humidityLabel.style.display = 'none';
+            // humidityLabel.style.display = 'none';
             humidityContainer.style.display = 'inline'; // Adjust to inline for a single line
             humiditySlider.disabled = false;
         } else {
@@ -61,11 +61,11 @@
 
     cloudVisibleToggle.addEventListener('change', function() {
         if (this.checked) {
-            cloudCoverageLabel.style.display = 'none';
+            // cloudCoverageLabel.style.display = 'none';
             cloudContainer.style.display = 'inline'; // Adjust to inline for a single line
             cloudCoverageSlider.disabled = false;
         } else {
-            cloudCoverageLabel.style.display = 'inline'; // Show label when unchecked
+            // cloudCoverageLabel.style.display = 'inline'; // Show label when unchecked
             cloudContainer.style.display = 'none';
             cloudCoverageSlider.disabled = true;
             cloudCoverageSlider.value = '0';
@@ -86,7 +86,7 @@
 
     moonVisibleToggle.addEventListener('change', function() {
         if (this.checked) {
-            moonLabel.style.display = 'none';
+            // moonLabel.style.display = 'none';
             moonPhaseContainer.style.display = 'inline'; // Adjust to inline for a single line
             moonPhaseSlider.disabled = false;
         } else {

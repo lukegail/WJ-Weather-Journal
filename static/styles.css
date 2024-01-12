@@ -80,7 +80,7 @@ select.form-control:focus {
 }
 
 .sliderLabel {
-    margin-left: 10px; /* Space between checkbox and label */
+    margin-left: 5px; /* Space between checkbox and label */
 }
 
 .sliderContainer {
@@ -91,7 +91,7 @@ select.form-control:focus {
 /* Styles for sliders */
 .slider {
     -webkit-appearance: none;
-    width: 78%; /* Adjust slider width */
+    width: 40%; /* Adjust slider width */
     height: 5px;
     border-radius: 5px;
     background: #333333;
