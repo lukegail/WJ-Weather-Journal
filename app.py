@@ -37,7 +37,7 @@ def after_request(response):
 
 """ displays user name below the navbar on every page (see layout.html)
 Context Processor: Automatically make a dict available in the context of all templates in a Flask app"""
-@app.context_processor
+@app.context_processor # displays user name below the navbar on every page
 def inject_user_details():
     if "user_id" in session:
         username = db.execute("SELECT username FROM users WHERE id = ?", session["user_id"])[0]['username']

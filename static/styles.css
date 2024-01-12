@@ -35,7 +35,17 @@ input.form-control, textarea.form-control {
 
 /* TYPED text color when field is defocused */
 input.form-control, textarea.form-control {
-    color: #dadada; /* light grey typed text when field is defocused */
+    color: #ffffff; /* light grey typed text when field is defocused */
+}
+
+/* Style for dropdown/select fields */
+select.form-control {
+    background-color: #272727; /* Dark background, similar to text fields */
+    color: #ff0000; /* RED text */
+    border: 1px solid #6c6c6c; /* Visible border, similar to text fields */
+    -webkit-appearance: none; /* Disable native appearance on WebKit browsers */
+    -moz-appearance: none; /* Disable native appearance on Firefox */
+    appearance: none; /* Disable native appearance on modern browsers */
 }
 
 /* slider position */
