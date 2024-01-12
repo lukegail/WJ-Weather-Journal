@@ -1,8 +1,10 @@
+
 /* Size for brand */
 nav .navbar-brand
 {
     font-size: xx-large;
 }
+
 
 /* Overall background and text color */
 body {
@@ -10,6 +12,8 @@ body {
     color: #ffffff; /* Light text */
 }
 
+
+/* #region Text Field Styles */
 /* Form controls - inputs and textareas */
 input.form-control, textarea.form-control {
     background-color: #272727; /* Darker background for inputs */
@@ -38,16 +42,38 @@ input.form-control, textarea.form-control {
     color: #ffffff; /* light grey typed text when field is defocused */
 }
 
+input.form-control, textarea.form-control {
+    padding: 0;       /* Reduces padding */
+    line-height: normal; /* Adjusts line height */
+    min-height: 1em;  /* Minimum height */
+}
+
+textarea.auto-expand {
+    resize: none;    /* Disable resizing */
+    overflow-y: hidden; /* Hide vertical scrollbar */
+}
+/* #endregion */
+
+
+/* #region dropdown/select Styles */
 /* Style for dropdown/select fields */
 select.form-control {
     background-color: #272727; /* Dark background, similar to text fields */
-    color: #ff0000; /* RED text */
+    color: #ffffff; /* BLUE text for selected option */
     border: 1px solid #6c6c6c; /* Visible border, similar to text fields */
     -webkit-appearance: none; /* Disable native appearance on WebKit browsers */
     -moz-appearance: none; /* Disable native appearance on Firefox */
     appearance: none; /* Disable native appearance on modern browsers */
 }
 
+/* Style for dropdown when focused */
+select.form-control:focus {
+    background-color: #272727; /* Keep the background consistent on focus */ 
+}
+/* #endregion */
+
+
+/* #region Slider Styles */
 /* slider position */
 #sliderRow {
     text-align: left; /* Align content to the left */
@@ -88,6 +114,8 @@ select.form-control {
     background: #FF0000;
     cursor: pointer;
 }
+/* #endregion */
+
 
 .field-align-left {
     text-align: left;
@@ -118,6 +146,7 @@ select.form-control {
 }
 
 
+/* #region fieldset Styles */
 fieldset {
     margin-bottom: 1em !important;
     border: 1px solid #666 !important;
@@ -129,16 +158,7 @@ legend {
     float:none;
     width:auto;
 }
+/* #endregion */
 
-input.form-control, textarea.form-control {
-    padding: 0;       /* Reduces padding */
-    line-height: normal; /* Adjusts line height */
-    min-height: 1em;  /* Minimum height */
-}
-
-textarea.auto-expand {
-    resize: none;    /* Disable resizing */
-    overflow-y: hidden; /* Hide vertical scrollbar */
-}
 
 

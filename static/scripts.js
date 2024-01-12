@@ -7,6 +7,27 @@
     });
 }
 
+{   // Change text color based on valid selection
+    document.addEventListener("DOMContentLoaded", function() {
+        var selects = document.querySelectorAll("select.form-control");
+    
+        // Function to set text color based on the selected option
+        function setColorBasedOnSelection(selectElement) {
+            selectElement.style.color = selectElement.value === '' ? "#848484" : "#ffffff";
+        }
+    
+        selects.forEach(function(select) {
+            // Set initial color
+            setColorBasedOnSelection(select);
+    
+            // Change event listener
+            select.addEventListener('change', function() {
+                setColorBasedOnSelection(this);
+            });
+        });
+    });
+}
+
 {   // Slider Toggle and Value Update: Humidity
     const humidityVisibleToggle = document.getElementById('humidityVisibleToggle');
     const humidityContainer = document.getElementById('humidityContainer');
