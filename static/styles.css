@@ -4,39 +4,24 @@ nav .navbar-brand
     font-size: xx-large;
 }
 
-
-
-#moonPhaseRow {
-    display: flex;
-    align-items: center;
+/* slider position */
+#sliderRow {
+    text-align: left; /* Align content to the left */
 }
 
-#moonLabel, #moonPhaseContainer {
+.sliderLabel {
+    margin-left: 10px; /* Space between checkbox and label */
+}
+
+.sliderContainer {
+    display: none; /* Initially hidden */
     margin-left: 10px; /* Adjust spacing as needed */
 }
 
-#moonPhaseContainer {
-    display: flex;
-    align-items: center;
-    width: 100%;
-}
-
-/* Ensure that the elements do not wrap */
-#moonPhaseRow, #moonPhaseContainer {
-    flex-wrap: nowrap;
-}
-
-
-
-
-/* sliders */
-.slidecontainer {
-    width: 100%;
-}
-
+/* Styles for sliders */
 .slider {
     -webkit-appearance: none;
-    width: 90%;
+    width: 78%; /* Adjust slider width */
     height: 5px;
     border-radius: 5px;
     background: #333333;
@@ -50,17 +35,9 @@ nav .navbar-brand
     opacity: 1;
 }
 
-.slider::-webkit-slider-thumb {
+.slider::-webkit-slider-thumb, .slider::-moz-range-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: #FF0000;
-    cursor: pointer;
-}
-
-.slider::-moz-range-thumb {
     width: 25px;
     height: 25px;
     border-radius: 50%;
@@ -95,6 +72,7 @@ nav .navbar-brand
     flex-grow: 0; /* Prevent input from growing */
     margin-right: 5px; /* Optional: space between the input and text */
 }
+
 
 fieldset {
     margin-bottom: 1em !important;

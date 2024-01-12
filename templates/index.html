@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Portfolio
+    Journal Entry
 {% endblock %}
 
 {% block main %}
@@ -59,16 +59,30 @@
 
     <fieldset> <!-- water -->
         <legend>water</legend>
-        <div class="mb-3"> <!-- humidity -->
-            # humidity Toggle
-            # humidity Slider
-
+        <div class="mb-3" id="sliderRow"> <!-- humidity -->
+            <!-- Humidity Toggle -->
+            <input type="checkbox" id="humidityVisibleToggle">
+            <label for="humidityVisibleToggle" id="humidityLabel" class="sliderLabel">humidity</label>
+        
+            <!-- Humidity Slider and Value -->
+            <div id="humidityContainer" class="sliderContainer" style="display: none;">
+                <input type="range" id="humidity" name="humidity" min="0" max="100" value="0" class="slider">
+                <span id="humidityValue">0%</span> <!-- Slider Value -->
+            </div>         
         </div>
-        <div class="mb-3"> <!-- cloud coverage -->
-            # cloud_coverage Toggle
-            # cloud_coverage Slider
-
+        
+        <div class="mb-3" id="sliderRow"> <!-- Cloud Coverage -->
+            <!-- Cloud Coverage Toggle -->
+            <input type="checkbox" id="cloudVisibleToggle">
+            <label for="cloudVisibleToggle" id="cloudCoverageLabel" class="sliderLabel">cloud coverage</label>
+        
+            <!-- Cloud Coverage Slider and Value -->
+            <div id="cloudContainer" class="sliderContainer" style="display: none;">
+                <input type="range" id="cloudCoverage" name="cloudCoverage" min="0" max="100" value="0" class="slider">
+                <span id="cloudValue">0%</span> <!-- Slider Value -->
+            </div>
         </div>
+    
         <div class="mb-3 field-align-left"> <!-- cloud speed -->
             <select name="cloud_speed" class="form-control">
                 <option value="" selected>cloud speed ≡</option>
@@ -130,21 +144,19 @@
                 placeholder="water notes"
                 rows="1"></textarea>
         </div>
-    </fieldset>
-    
-    <fieldset> <!-- moon phase and bio notes -->
-        <div class="mb-3" id="moonPhaseRow"> <!-- Moon Phase Row -->
+    </fieldset>  
+    <fieldset> <!-- moon and bio -->
+        <div class="mb-3" id="sliderRow"> <!-- Moon Phase -->
             <!-- moon_phase Toggle -->
             <input type="checkbox" id="moonVisibleToggle">
-            <label for="moonVisibleToggle" id="moonLabel">moon</label>
+            <label for="moonVisibleToggle" id="moonLabel" class="sliderLabel">moon</label>
         
             <!-- moon_phase Slider and Value -->
-            <div id="moonPhaseContainer" style="display: none;">
+            <div id="moonPhaseContainer" class="sliderContainer" style="display: none;">
                 <input type="range" id="moonPhase" name="moonPhase" min="1" max="28" value="1" class="slider">
                 <span id="moonPhaseValue">1</span> <!-- Slider Value -->
             </div>
         </div>
-        
         <div class="mb-3"> <!-- bio notes -->
             <textarea autocomplete="off" 
                 class="form-control auto-expand"
@@ -157,15 +169,62 @@
 </form>
 
 <!-- JavaScript at the bottom of the body -->
-<script>
-    // Auto expand textarea for 'notes' fields
+<script> // Auto expand textarea for 'notes' fields
     const textarea = document.querySelector('textarea.auto-expand');
     textarea.addEventListener('input', function() {
         this.style.height = 'auto';
         this.style.height = (this.scrollHeight) + 'px';
     });
+</script>
+<script> // Humidity Slider Toggle and Value Update
+    const humidityVisibleToggle = document.getElementById('humidityVisibleToggle');
+    const humidityContainer = document.getElementById('humidityContainer');
+    const humiditySlider = document.getElementById('humidity');
+    const humidityValue = document.getElementById('humidityValue');
 
-    // Moon phase
+    humidityVisibleToggle.addEventListener('change', function() {
+        if (this.checked) {
+            humidityLabel.style.display = 'none';
+            humidityContainer.style.display = 'inline'; // Adjust to inline for a single line
+            humiditySlider.disabled = false;
+        } else {
+            humidityLabel.style.display = 'inline'; // Show label when unchecked
+            humidityContainer.style.display = 'none';
+            humiditySlider.disabled = true;
+            humiditySlider.value = '0';
+            humidityValue.textContent = '0%'; // Reset the value with '%' sign
+        }
+    });
+
+    humiditySlider.oninput = function() {
+        humidityValue.textContent = this.value + '%'; // Update the value with '%' sign
+    }
+</script>
+<script> // Cloud Coverage Slider Toggle and Value Update
+    const cloudVisibleToggle = document.getElementById('cloudVisibleToggle');
+    const cloudContainer = document.getElementById('cloudContainer');
+    const cloudCoverageSlider = document.getElementById('cloudCoverage');
+    const cloudValue = document.getElementById('cloudValue');
+
+    cloudVisibleToggle.addEventListener('change', function() {
+        if (this.checked) {
+            cloudCoverageLabel.style.display = 'none';
+            cloudContainer.style.display = 'inline'; // Adjust to inline for a single line
+            cloudCoverageSlider.disabled = false;
+        } else {
+            cloudCoverageLabel.style.display = 'inline'; // Show label when unchecked
+            cloudContainer.style.display = 'none';
+            cloudCoverageSlider.disabled = true;
+            cloudCoverageSlider.value = '0';
+            cloudValue.textContent = '0%'; // Reset the value with '%' sign
+        }
+    });
+
+    cloudCoverageSlider.oninput = function() {
+        cloudValue.textContent = this.value + '%'; // Update the value with '%' sign
+    }
+</script>
+<script> // // Moon Phase Slider Toggle and Value Update
     const moonVisibleToggle = document.getElementById('moonVisibleToggle');
     const moonPhaseContainer = document.getElementById('moonPhaseContainer');
     const moonPhaseSlider = document.getElementById('moonPhase');
@@ -190,31 +249,5 @@
 
 </script>
 
+
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
-<!-- moonPhase slider -->
-<div class="slidecontainer"></div>
-    <label for="moonPhase">Moon Phase:</label>
-    <input type="range" id="moonPhase" name="moonPhase" min="1" max="28" value="1" class="slider">
-    <span id="moonPhaseValue">1</span>
-</div>
-
-
-<script>
-    const moonPhaseSlider = document.getElementById('moonPhase');
-    const moonPhaseValue = document.getElementById('moonPhaseValue');
-
-// Set the text content of the "moonPhaseValue" element to the value of the "moonPhaseSlider" input element
-    moonPhaseSlider.oninput = function() {
-        moonPhaseValue.textContent = this.value;
-    }
-</script>
