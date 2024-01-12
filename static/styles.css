@@ -4,6 +4,40 @@ nav .navbar-brand
     font-size: xx-large;
 }
 
+/* Overall background and text color */
+body {
+    background-color: #000000; /* Dark background */
+    color: #ffffff; /* Light text */
+}
+
+/* Form controls - inputs and textareas */
+input.form-control, textarea.form-control {
+    background-color: #272727; /* Darker background for inputs */
+    border: 1px solid #6c6c6c; /* Visible border */
+    /* Other styles remain unchanged */
+}
+
+/* Placeholder text color */
+input.form-control::placeholder, textarea.form-control::placeholder {
+    color: #848484; /* medium grey for placeholder text */
+}
+
+/* Background and text color when field is focused */
+input.form-control:focus, textarea.form-control:focus {
+    background-color: #000000; /* Black background when field is focused */
+    color: #ffffff; /* White TYPED text when field is focused (placeholder text stays medium grey) */
+}
+
+/* Ensuring the text stays WHITE while typing, overrides WebKit-specific behavior */
+input.form-control, textarea.form-control {
+    -webkit-text-fill-color: initial; /* Reset to default for WebKit browsers */
+}
+
+/* TYPED text color when field is defocused */
+input.form-control, textarea.form-control {
+    color: #dadada; /* light grey typed text when field is defocused */
+}
+
 /* slider position */
 #sliderRow {
     text-align: left; /* Align content to the left */
@@ -51,7 +85,7 @@ nav .navbar-brand
 
 .field-align-left .form-control {
     display: inline-block;
-    width: 34vw; /* Or set a specific width */
+    width: 34vw;
     padding: 0;           /* Reduces padding */
     line-height: normal;  /* Adjusts line height */
     min-height: 1em;
