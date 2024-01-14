@@ -76,13 +76,17 @@
         </div>
         <div class="mb-3" id="sliderRow"> <!-- Cloud Coverage -->
             <!-- Cloud Coverage Toggle -->
-            <input type="checkbox" id="cloudVisibleToggle">
-            <label for="cloudVisibleToggle" id="cloudCoverageLabel" class="sliderLabel">cloud coverage</label>
+            <input type="checkbox" id="cloudCoverageVisibleToggle">
+            <label for="cloudCoverageVisibleToggle" id="cloudCoverageLabel" class="sliderLabel">cloud coverage</label>
         
             <!-- Cloud Coverage Slider and Value -->
-            <div id="cloudContainer" class="sliderContainer" style="display: none;">
+            <div id="cloudCoverageContainer" style="display: none;">
                 <input type="range" id="cloudCoverage" name="cloudCoverage" min="0" max="100" value="0" class="slider">
-                <span id="cloudValue">0%</span> <!-- Slider Value -->
+            </div>
+
+            <!-- Cloud Coverage Value container -->
+            <div id="cloudCoverageValueContainer" style="display: none;">
+                <span id="cloudCoverageValue">0%</span> <!-- Slider Value -->
             </div>
         </div>
         <div class="mb-3 field-align-left"> <!-- cloud speed -->
@@ -151,12 +155,16 @@
     <fieldset> <!-- moon and bio -->
         <div class="mb-3" id="sliderRow"> <!-- Moon Phase -->
             <!-- moon_phase Toggle -->
-            <input type="checkbox" id="moonVisibleToggle">
-            <label for="moonVisibleToggle" id="moonLabel" class="sliderLabel">moon</label>
+            <input type="checkbox" id="moonPhaseVisibleToggle">
+            <label for="moonPhaseVisibleToggle" id="moonPhaseLabel" class="sliderLabel">moon</label>
         
-            <!-- moon_phase Slider and Value -->
-            <div id="moonPhaseContainer" class="sliderContainer" style="display: none;">
+            <!-- moon phase Slider and Value -->
+            <div id="moonPhaseContainer" style="display: none;">
                 <input type="range" id="moonPhase" name="moonPhase" min="1" max="28" value="1" class="slider">
+            </div>
+
+            <!-- moon phase Value container -->
+            <div id="moonPhaseValueContainer" style="display: none;">
                 <span id="moonPhaseValue">1</span> <!-- Slider Value -->
             </div>
         </div>

@@ -36,12 +36,10 @@
 
     humidityVisibleToggle.addEventListener('change', function() {
         if (this.checked) {
-            // humidityLabel.style.display = 'none';
             humidityContainer.style.display = 'block'; // Adjust to inline for a single line
             humidityValueContainer.style.display = 'block'; // Show value
             humiditySlider.disabled = false;
         } else {
-            // humidityLabel.style.display = 'inline'; // Show label when unchecked
             humidityContainer.style.display = 'none';
             humidityValueContainer.style.display = 'none'; // Hide value
             humiditySlider.disabled = true;
@@ -56,44 +54,44 @@
 }
 
 {   // Slider Toggle and Value Update: Cloud Coverage
-    const cloudVisibleToggle = document.getElementById('cloudVisibleToggle');
-    const cloudContainer = document.getElementById('cloudContainer');
+    const cloudCoverageVisibleToggle = document.getElementById('cloudCoverageVisibleToggle');
+    const cloudCoverageContainer = document.getElementById('cloudCoverageContainer');
     const cloudCoverageSlider = document.getElementById('cloudCoverage');
-    const cloudValue = document.getElementById('cloudValue');
+    const cloudCoverageValue = document.getElementById('cloudCoverageValue');
 
-    cloudVisibleToggle.addEventListener('change', function() {
+    cloudCoverageVisibleToggle.addEventListener('change', function() {
         if (this.checked) {
-            // cloudCoverageLabel.style.display = 'none';
-            cloudContainer.style.display = 'inline'; // Adjust to inline for a single line
+            cloudCoverageContainer.style.display = 'block';
+            cloudCoverageValueContainer.style.display = 'block'; // Adjust to inline for a single line
             cloudCoverageSlider.disabled = false;
         } else {
-            // cloudCoverageLabel.style.display = 'inline'; // Show label when unchecked
-            cloudContainer.style.display = 'none';
+            cloudCoverageContainer.style.display = 'none';
+            cloudCoverageValueContainer.style.display = 'none';
             cloudCoverageSlider.disabled = true;
             cloudCoverageSlider.value = '0';
-            cloudValue.textContent = '0%'; // Reset the value with '%' sign
+            cloudCoverageValue.textContent = '0%'; // Reset the value with '%' sign
         }
     });
 
     cloudCoverageSlider.oninput = function() {
-        cloudValue.textContent = this.value + '%'; // Update the value with '%' sign
+        cloudCoverageValue.textContent = this.value + '%'; // Update the value with '%' sign
     }
 }
 
 {   // Slider Toggle and Value Update: Moon Phase
-    const moonVisibleToggle = document.getElementById('moonVisibleToggle');
+    const moonPhaseVisibleToggle = document.getElementById('moonPhaseVisibleToggle');
     const moonPhaseContainer = document.getElementById('moonPhaseContainer');
     const moonPhaseSlider = document.getElementById('moonPhase');
     const moonPhaseValue = document.getElementById('moonPhaseValue');
 
-    moonVisibleToggle.addEventListener('change', function() {
+    moonPhaseVisibleToggle.addEventListener('change', function() {
         if (this.checked) {
-            // moonLabel.style.display = 'none';
-            moonPhaseContainer.style.display = 'inline'; // Adjust to inline for a single line
+            moonPhaseContainer.style.display = 'block';
+            moonPhaseValueContainer.style.display = 'block'; // Adjust to inline for a single line
             moonPhaseSlider.disabled = false;
         } else {
-            moonLabel.style.display = 'inline'; // Show label when unchecked
             moonPhaseContainer.style.display = 'none';
+            moonPhaseValueContainer.style.display = 'none'; // Show label when unchecked
             moonPhaseSlider.disabled = true;
             moonPhaseSlider.value = '1';
         }

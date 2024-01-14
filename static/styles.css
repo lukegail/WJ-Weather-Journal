@@ -5,7 +5,6 @@ nav .navbar-brand
     font-size: xx-large;
 }
 
-
 /* Overall background and text color */
 body {
     background-color: #000000; /* Dark background */
@@ -54,7 +53,6 @@ textarea.auto-expand {
 }
 /* #endregion */
 
-
 /* #region dropdown/select Styles */
 /* Style for dropdown/select fields */
 select.form-control {
@@ -72,8 +70,7 @@ select.form-control:focus {
 }
 /* #endregion */
 
-
-/* #region Slider Styles */
+/* #region General Slider Styles */
 /* slider position */
 #sliderRow {
     position: relative;
@@ -83,23 +80,6 @@ select.form-control:focus {
 
 .sliderLabel {
     margin-left: 5px; /* Space between checkbox and label */
-}
-
-#humidityContainer {
-    position: absolute;
-    left: 25%; /* Set a fixed distance from the left */
-    right: 0px;
-    top: -2px;
-    display: flex;
-    align-items: center;
-}
-
-#humidityValueContainer {
-    position: absolute; /* Position relative to the viewport */
-    right: 15px; /* Align to the right side of the viewport */
-    top: 0px;
-    display: flex;
-    align-items: center;
 }
 
 /* Styles for sliders */
@@ -122,27 +102,102 @@ select.form-control:focus {
 .slider::-webkit-slider-thumb, .slider::-moz-range-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     background: #FF0000;
     cursor: pointer;
 }
 /* #endregion */
 
-/* Individual styles for the humidity slider */
+/* #region IndividualSlider Styles */
+/* #region === Humidity Slider Styles === */
+#humidityContainer {
+    position: absolute;
+    left: 25%; /* Set a fixed distance from the left */
+    right: 0px;
+    top: -2px;
+    display: flex;
+    align-items: center;
+}
+
 #humidity {
     width: 55%; /* Adjust width as needed */
 }
 
-/* Add similar styles for other sliders by their IDs */
+#humidityValueContainer {
+    position: absolute; /* Position relative to the viewport */
+    right: 15px; /* Align to the right side of the viewport */
+    top: 0px;
+    display: flex;
+    align-items: center;
+}
+/* #endregion */
+
+/* #region === Cloud Coverage Styles === */
+#cloudCoverageContainer {
+    position: absolute;
+    left: 25%; /* Set a fixed distance from the left */
+    right: 0px;
+    top: -2px;
+    display: flex;
+    align-items: center;
+}
+
 #cloudCoverage {
-    width: 78%;
+    width: 55%;
+}
+
+#cloudCoverageValueContainer {
+    position: absolute; /* Position relative to the viewport */
+    right: 15px; /* Align to the right side of the viewport */
+    top: 0px;
+    display: flex;
+    align-items: center;
+}
+/* #endregion */
+
+/* #region === Moon Phase Styles === */
+#moonPhaseContainer {
+    position: absolute;
+    left: 25%; /* Set a fixed distance from the left */
+    right: 0px;
+    top: -2px;
+    display: flex;
+    align-items: center;
 }
 
 #moonPhase {
-    width: 40%;
+    width: 55%;
 }
+
+#moonPhaseValueContainer {
+    position: absolute; /* Position relative to the viewport */
+    right: 15px; /* Align to the right side of the viewport */
+    top: 0px;
+    display: flex;
+    align-items: center;
+}
+/* #endregion */
+/* #endregion */
+
+/* #region fieldset Styles */
+fieldset {
+    margin-bottom: 1em !important;
+    border: 1px solid #666 !important;
+    padding:1px !important;
+}
+
+legend {
+    padding: 1px 10px !important;
+    float:none;
+    width:auto;
+}
+/* #endregion */
+
+
+
+
 
 .field-align-left {
     text-align: left;
@@ -173,19 +228,7 @@ select.form-control:focus {
 }
 
 
-/* #region fieldset Styles */
-fieldset {
-    margin-bottom: 1em !important;
-    border: 1px solid #666 !important;
-    padding:1px !important;
-}
 
-legend {
-    padding: 1px 10px !important;
-    float:none;
-    width:auto;
-}
-/* #endregion */
 
 
 
