@@ -81,20 +81,26 @@ select.form-control:focus {
     align-items: center;
 }
 
-
 .sliderLabel {
     margin-left: 5px; /* Space between checkbox and label */
 }
 
-.sliderContainer {
+#humidityContainer {
     position: absolute;
-    left: 40%; /* Adjust this value as needed */
+    left: 25%; /* Set a fixed distance from the left */
     right: 0px;
-    top: 0;
+    top: -2px;
     display: flex;
     align-items: center;
 }
 
+#humidityValueContainer {
+    position: absolute; /* Position relative to the viewport */
+    right: 15px; /* Align to the right side of the viewport */
+    top: 0px;
+    display: flex;
+    align-items: center;
+}
 
 /* Styles for sliders */
 .slider {
@@ -126,7 +132,7 @@ select.form-control:focus {
 
 /* Individual styles for the humidity slider */
 #humidity {
-    width: 78%; /* Adjust width as needed */
+    width: 55%; /* Adjust width as needed */
 }
 
 /* Add similar styles for other sliders by their IDs */

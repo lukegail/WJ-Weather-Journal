@@ -65,10 +65,14 @@
             <label for="humidityVisibleToggle" id="humidityLabel" class="sliderLabel">humidity</label>
         
             <!-- Humidity Slider and Value -->
-            <div id="humidityContainer" class="sliderContainer" style="display: none;">
+            <div id="humidityContainer" style="display: none;">
                 <input type="range" id="humidity" name="humidity" min="0" max="100" value="0" class="slider">
-                <span id="humidityValue">0%</span> <!-- Slider Value -->
-            </div>         
+            </div>  
+            
+            <!-- Humidity Value container -->
+            <div id="humidityValueContainer" style="display: none;">
+                <span id="humidityValue">0%</span>
+            </div>
         </div>
         <div class="mb-3" id="sliderRow"> <!-- Cloud Coverage -->
             <!-- Cloud Coverage Toggle -->

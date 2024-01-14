@@ -37,11 +37,13 @@
     humidityVisibleToggle.addEventListener('change', function() {
         if (this.checked) {
             // humidityLabel.style.display = 'none';
-            humidityContainer.style.display = 'inline'; // Adjust to inline for a single line
+            humidityContainer.style.display = 'block'; // Adjust to inline for a single line
+            humidityValueContainer.style.display = 'block'; // Show value
             humiditySlider.disabled = false;
         } else {
             // humidityLabel.style.display = 'inline'; // Show label when unchecked
             humidityContainer.style.display = 'none';
+            humidityValueContainer.style.display = 'none'; // Hide value
             humiditySlider.disabled = true;
             humiditySlider.value = '0';
             humidityValue.textContent = '0%'; // Reset the value with '%' sign
