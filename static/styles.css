@@ -76,22 +76,30 @@ select.form-control:focus {
 /* #region Slider Styles */
 /* slider position */
 #sliderRow {
-    text-align: left; /* Align content to the left */
+    position: relative;
+    display: flex;
+    align-items: center;
 }
+
 
 .sliderLabel {
     margin-left: 5px; /* Space between checkbox and label */
 }
 
 .sliderContainer {
-    display: none; /* Initially hidden */
-    margin-left: 10px; /* Adjust spacing as needed */
+    position: absolute;
+    left: 40%; /* Adjust this value as needed */
+    right: 0px;
+    top: 0;
+    display: flex;
+    align-items: center;
 }
+
 
 /* Styles for sliders */
 .slider {
     -webkit-appearance: none;
-    width: 40%; /* Adjust slider width */
+    width: 100%; /* Adjust slider width */
     height: 5px;
     border-radius: 5px;
     background: #333333;
@@ -116,6 +124,19 @@ select.form-control:focus {
 }
 /* #endregion */
 
+/* Individual styles for the humidity slider */
+#humidity {
+    width: 78%; /* Adjust width as needed */
+}
+
+/* Add similar styles for other sliders by their IDs */
+#cloudCoverage {
+    width: 78%;
+}
+
+#moonPhase {
+    width: 40%;
+}
 
 .field-align-left {
     text-align: left;

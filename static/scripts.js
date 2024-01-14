@@ -40,7 +40,7 @@
             humidityContainer.style.display = 'inline'; // Adjust to inline for a single line
             humiditySlider.disabled = false;
         } else {
-            humidityLabel.style.display = 'inline'; // Show label when unchecked
+            // humidityLabel.style.display = 'inline'; // Show label when unchecked
             humidityContainer.style.display = 'none';
             humiditySlider.disabled = true;
             humiditySlider.value = '0';
