@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 1000 1000" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g id="moon--shadow-" serif:id="moon (shadow)" transform="matrix(-6.37664,0,0,6.86861,1011.49,-12.8189)">
+        <ellipse cx="80.223" cy="74.671" rx="77.152" ry="71.626" style="fill:rgb(30,30,30);"/>
+    </g>
+    <g id="light-quarter" serif:id="light quarter" transform="matrix(1,0,0,1,-0.12796,0)">
+        <path d="M500,8.091L500,992.037C228.493,991.993 8.091,771.564 8.091,500.064C8.091,228.564 228.493,8.135 500,8.091ZM992.037,500.064C992.037,500.064 992.037,500.064 992.037,500.064Z" style="fill:white;"/>
+    </g>
+    <g id="LIGHT-CHANGER" serif:id="LIGHT CHANGER" transform="matrix(2.5665,0,0,1,-976.361,0.000103107)">
+        <ellipse cx="575.243" cy="500.064" rx="175.336" ry="491.973" style="fill:white;"/>
+    </g>
+    <g id="halo" transform="matrix(-1,0,0,1,1000,0)">
+        <path d="M500,0C775.958,0 1000,224.042 1000,500C1000,775.958 775.958,1000 500,1000C224.042,1000 -0,775.958 -0,500C-0,224.042 224.042,0 500,0ZM500.064,8.091C771.591,8.091 992.037,228.537 992.037,500.064C992.037,771.591 771.591,992.037 500.064,992.037C228.537,992.037 8.091,771.591 8.091,500.064C8.091,228.537 228.537,8.091 500.064,8.091Z" style="fill:rgb(120,120,120);"/>
+    </g>
+</svg>

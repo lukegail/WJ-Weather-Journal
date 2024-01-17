@@ -98,7 +98,8 @@
     });
 
     moonPhaseSlider.oninput = function() {
-        moonPhaseValue.textContent = this.value;
+        document.getElementById('moonPhaseImage').src = `/static/moon_images/${this.value}.svg`;
+        /* moonPhaseValue.textContent = this.value; */
     }
 }
 
