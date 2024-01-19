@@ -154,21 +154,25 @@
 
     <fieldset> <!-- moon and bio -->
         <div class="mb-3" id="sliderRow"> <!-- Moon Phase -->
-            <!-- moon_phase Toggle -->
+            <!-- Moon Phase Toggle -->
             <input type="checkbox" id="moonPhaseVisibleToggle">
             <label for="moonPhaseVisibleToggle" id="moonPhaseLabel" class="sliderLabel">moon</label>
         
-            <!-- moon phase Slider and Value -->
-            <div id="moonPhaseContainer" style="display: none;">
-                <input type="range" id="moonPhase" name="moonPhase" min="1" max="28" value="1" class="slider">
-            </div>
+            <!-- Invisible Placeholder -->
+            <div class="moonImagePlaceholder" style="width: 30px; height: 30px;"></div>
 
-            <!-- moon phase Value container -->
-            <div id="moonPhaseValueContainer" style="display: none;">
-                <img id="moonPhaseImage" src="/static/moon_images/1.svg" alt="Moon Phase" width="30" height="30"> <!-- Initial image -->
-                <!-- <span id="moonPhaseValue">1</span> --> <!-- Slider Value -->
+            <div class="moonPhaseFlexContainer" style="display: none;">
+
+                <!-- Moon Phase Image Container -->
+                <div><img id="moonPhaseImage" src="/static/moon_images/1.svg" alt="Moon Phase" width="30" height="30" style="display: none;"></div>
+        
+                <!-- Moon Phase Slider Container -->
+                <div>
+                    <input type="range" id="moonPhaseSlider" name="moonPhaseSlider" min="1" max="28" value="1" class="slider">
+                </div>
             </div>
         </div>
+        
         <div class="mb-3"> <!-- bio notes -->
             <textarea autocomplete="off" 
                 class="form-control auto-expand"

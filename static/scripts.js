@@ -80,26 +80,28 @@
 
 {   // Slider Toggle and Value Update: Moon Phase
     const moonPhaseVisibleToggle = document.getElementById('moonPhaseVisibleToggle');
-    const moonPhaseContainer = document.getElementById('moonPhaseContainer');
-    const moonPhaseSlider = document.getElementById('moonPhase');
-    const moonPhaseValue = document.getElementById('moonPhaseValue');
+    const moonPhaseSlider = document.getElementById('moonPhaseSlider');
+    const moonImagePlaceholder = document.querySelector('.moonImagePlaceholder'); // Reference to the placeholder
 
     moonPhaseVisibleToggle.addEventListener('change', function() {
+        const moonPhaseFlexContainer = document.querySelector('.moonPhaseFlexContainer');
         if (this.checked) {
-            moonPhaseContainer.style.display = 'block';
-            moonPhaseValueContainer.style.display = 'block'; // Adjust to inline for a single line
+            moonPhaseFlexContainer.style.display = 'flex'; // Show the flex container
+            moonPhaseLabel.style.display = 'none'; // Hide the label
+            moonPhaseImage.style.display = 'block'; // Show the image
+            moonImagePlaceholder.style.display = 'none'; // Hide the placeholder when the image is visible
             moonPhaseSlider.disabled = false;
         } else {
-            moonPhaseContainer.style.display = 'none';
-            moonPhaseValueContainer.style.display = 'none'; // Show label when unchecked
+            moonPhaseFlexContainer.style.display = 'none'; // Hide the flex container
+            moonPhaseLabel.style.display = 'block'; // Show the label
+            moonPhaseImage.style.display = 'none'; // Hide the image
+            moonImagePlaceholder.style.display = 'block'; // Show the placeholder when the image is hidden
             moonPhaseSlider.disabled = true;
-            moonPhaseSlider.value = '1';
         }
     });
 
     moonPhaseSlider.oninput = function() {
         document.getElementById('moonPhaseImage').src = `/static/moon_images/${this.value}.svg`;
-        /* moonPhaseValue.textContent = this.value; */
     }
 }
 

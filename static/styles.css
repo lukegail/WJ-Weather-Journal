@@ -158,26 +158,39 @@ select.form-control:focus {
 /* #endregion */
 
 /* #region === Moon Phase Styles === */
-#moonPhaseContainer {
+
+#sliderRow {
+    /* Other existing styles */
+    margin-top: 10px; /* Adjust this value as needed */
+}
+
+#moonPhaseSlider {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto; /* Let the slider take up the remaining space */
     position: absolute;
-    left: 25%; /* Set a fixed distance from the left */
-    right: 0px;
-    top: -2px;
+    left: 25%;
+    display: flex;
+    align-items: center;
+    width: calc(75% - 20px);
+    top: 12.5px;
+}
+
+.moonPhaseFlexContainer {
     display: flex;
     align-items: center;
 }
 
-#moonPhase {
-    width: 55%;
+#moonPhaseImage {
+    margin-left: 20px;
 }
 
-#moonPhaseValueContainer {
-    position: absolute; /* Position relative to the viewport */
-    right: 15px; /* Align to the right side of the viewport */
-    top: 0px;
-    display: flex;
-    align-items: center;
+.moonImagePlaceholder {
+    height: 30px;
 }
+
+
+
 /* #endregion */
 /* #endregion */
 
