@@ -99,15 +99,30 @@ select.form-control:focus {
     opacity: 1;
 }
 
-.slider::-webkit-slider-thumb, .slider::-moz-range-thumb {
-    -webkit-appearance: none;
+/* Specific thumb styles for Firefox */
+.slider::-moz-range-thumb {
     appearance: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #FF0000;
+    border: none;
     cursor: pointer;
+    width: 30px; /* Larger width for easier interaction */
+    height: 30px; /* Larger height for easier interaction */
+    border-radius: 50%;
+    background: #333333;
+    box-shadow: 0 0 0 1px #c8c8c8; /* Thin light ring as an outline */
 }
+
+/* Specific thumb styles for WebKit (iOS) */
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 30px; /* Larger width for easier interaction */
+    height: 30px; /* Larger height for easier interaction */
+    border-radius: 50%;
+    background: #333333;
+    box-shadow: 0 0 0 .5px #c8c8c8; /* Thin light ring as an outline */
+}
+
+
+
 /* #endregion */
 
 /* #region IndividualSlider Styles */
