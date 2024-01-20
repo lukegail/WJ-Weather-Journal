@@ -47,10 +47,105 @@ def inject_user_details():
         return dict(username=None)
 
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 @login_required
 def index():
-    return render_template("index.html")
+
+    if request.method == "POST":
+
+        form_data = {
+            'temp': request.form.get("temp"),
+            'wind_speed': request.form.get("windSpeed"),
+            'wind_direction': request.form.get("windDirection"),
+            'air_notes': request.form.get("airNotes"),
+            'humidity': request.form.get("humidity"),
+            'cloud_coverage': request.form.get("cloudCoverage"),
+            'cloud_speed': request.form.get("cloudSpeed"),
+            'cloud_altitude': request.form.get("cloudAltitude"),
+            'precipitation': request.form.get("precipitation"),
+            'water_notes': request.form.get("waterNotes"),
+            'moon_phase': request.form.get("moonPhase"),
+            'bio_notes': request.form.get("bioNotes")
+        }
+
+        valid_directions = {'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW', 'N', 'NNE', 'NE', 'ENE'}
+        valid_cloud_speeds = {'still', 'slow', 'med', 'fast'}
+        valid_cloud_altitudes = {'low', 'med', 'high'}
+        valid_precipitations = {'fog', 'rain (barely)', 'rain (light)', 'rain (moderate)', 'rain (heavy)', 'sleet', 'hail', 'snow (light)', 'snow (moderate)', 'snow (heavy)'}
+    
+        # validate and convert
+        for field, value in form_data.items():
+            if value:  # Skip validation if field is empty
+                try:
+                    if field in ['humidity', 'cloud_coverage', 'wind_speed', 'moon_phase']:
+                        int_value = int(value)
+
+                        if field in ['humidity', 'cloud_coverage'] and not (0 <= int_value <= 100):
+                            return apology(f"{field} must be between 0 and 100", 400)
+                        
+                        elif field == 'moon_phase' and not (1 <= int_value <= 28):
+                            return apology("moon phase must be between 1 and 28", 400)
+                        
+                        form_data[field] = int_value  # Store the converted integer
+
+                    elif field == 'temp':
+                        form_data[field] = round(float(value), 1)  # Round to 1 decimal place and store as float
+
+                except ValueError:
+                    return apology(f"Invalid input for {field}", 400)
+                
+                if field == 'wind_direction' and value not in valid_directions:
+                    return apology(f"Invalid input for {field}", 400)
+                
+                elif field == 'cloud_speed' and value not in valid_cloud_speeds:
+                    return apology(f"Invalid input for {field}", 400)
+                
+                elif field == 'cloud_altitude' and value not in valid_cloud_altitudes:
+                    return apology(f"Invalid input for {field}", 400)
+                
+                elif field == 'precipitation' and value not in valid_precipitations:
+                    return apology(f"Invalid input for {field}", 400)
+                
+        
+
+
+
+    
+    else:    
+        return render_template("index.html")
+
+
+
+
+
+
+""" @app.route("/quote", methods=["GET", "POST"])
+@login_required
+def quote():
+    
+
+    if request.method == "POST":
+        # get username and password from registration form
+        symbol = request.form.get("symbol").upper()
+
+        # Ensure username was submitted
+        if not symbol:
+            return apology("must provide symbol", 400)
+
+        # get quote info (dict) for symbol,
+        quote_info = lookup(symbol)
+
+        # apology if a lookup error occurs or the symbol is invalid (lookup will return None)
+        if not quote_info:
+            return apology("stock quote error", 400)
+
+        # formats latest stock price as $usd.00
+        price = usd(quote_info["price"])
+
+        return render_template("quoted.html", symbol=symbol, price=price)
+    else:
+        return render_template("quote.html")"""
+
 
 
 @app.route("/login", methods=["GET", "POST"])

@@ -21,14 +21,14 @@
         <div class="mb-3 input-with-text"> <!-- wind speed -->
             <input autocomplete="off" 
                 class="form-control"
-                name="wind_speed"
+                name="windSpeed"
                 placeholder="wind speed"
                 type="number"
                 style="width: 34vw">
             <span>mph</span>
         </div>
         <div class="mb-3 field-align-left"> <!-- wind direction -->
-            <select name="wind_direction" class="form-control">
+            <select name="windDirection" class="form-control">
                 <option value="" selected>wind direction ≡</option>
                 <option value="E">E</option>
                 <option value="ESE">ESE</option>
@@ -51,7 +51,7 @@
         <div class="mb-3"> <!-- air notes -->
             <textarea autocomplete="off" 
                 class="form-control auto-expand"
-                name="air_notes"
+                name="airNotes"
                 placeholder="air notes"
                 rows="1"></textarea>
         </div>
@@ -146,7 +146,7 @@
         <div class="mb-3"> <!-- water notes -->
             <textarea autocomplete="off" 
                 class="form-control auto-expand"
-                name="water_notes"
+                name="waterNotes"
                 placeholder="water notes"
                 rows="1"></textarea>
         </div>
@@ -164,11 +164,13 @@
             <div class="moonPhaseFlexContainer" style="display: none;">
 
                 <!-- Moon Phase Image Container -->
-                <div><img id="moonPhaseImage" src="/static/moon_images/1.svg" alt="Moon Phase" width="30" height="30" style="display: none;"></div>
+                <div>
+                    <img id="moonPhaseImage" src="/static/moon_images/1.svg" alt="Moon Phase" width="30" height="30" style="display: none;">
+                </div>
         
                 <!-- Moon Phase Slider Container -->
                 <div>
-                    <input type="range" id="moonPhaseSlider" name="moonPhaseSlider" min="1" max="28" value="1" class="slider">
+                    <input type="range" id="moonPhaseSlider" name="moonPhase" min="1" max="28" value="1" class="slider">
                 </div>
             </div>
         </div>
@@ -176,7 +178,7 @@
         <div class="mb-3"> <!-- bio notes -->
             <textarea autocomplete="off" 
                 class="form-control auto-expand"
-                name="bio_notes"
+                name="bioNotes"
                 placeholder="bio notes"
                 rows="1"></textarea>
         </div>
