@@ -8,13 +8,12 @@
 
 <form action="/" method="post">
     <fieldset> <!-- air -->
-        <legend>air</legend>
-        <div class="mb-3 input-with-text"> <!-- temp -->
+        <div class="mb-3 input-with-text" style="padding-top: 17px;"> <!-- temp -->
             <input autocomplete="off"
                 class="form-control"
                 name="temp"
                 placeholder="temp"
-                type="number"
+                type="text"
                 style="width: 34vw">
             <span>°F</span>
         </div>
@@ -23,7 +22,7 @@
                 class="form-control"
                 name="windSpeed"
                 placeholder="wind speed"
-                type="number"
+                type="text"
                 style="width: 34vw">
             <span>mph</span>
         </div>
@@ -58,7 +57,6 @@
     </fieldset>
 
     <fieldset> <!-- water -->
-        <legend>water</legend>
         <div class="mb-3" id="sliderRow"> <!-- humidity -->
             <!-- Humidity Toggle -->
             <input type="checkbox" id="humidityVisibleToggle">

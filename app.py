@@ -1,7 +1,8 @@
-import os
+import pytz
 
 from cs50 import SQL
-from flask import Flask, flash, redirect, render_template, request, session
+from datetime import datetime
+from flask import Flask, redirect, render_template, request, session
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -130,7 +131,30 @@ def index():
         return render_template("index.html")
 
 
+@app.route("/history", methods=["GET", "POST"])
+@login_required
+def history():
 
+    if request.method == "POST":      
+        return redirect("/history")
+    
+    else:
+        entries = db.execute("SELECT * FROM weather_entries WHERE user_id = ? ORDER BY log_time", session["user_id"])
+
+        for entry in entries:
+            # Assuming 'log_time' is a string in ISO format, e.g., "2022-01-01T12:00:00"
+            log_time_gmt = datetime.fromisoformat(entry["log_time"])
+            
+            # Set the timezone to GMT
+            log_time_gmt = pytz.timezone('GMT').localize(log_time_gmt)
+
+            # Convert to EST
+            log_time_est = log_time_gmt.astimezone(pytz.timezone('America/New_York'))
+            
+            # Format the datetime object to a string without timezone information
+            entry["log_time"] = log_time_est.strftime('%Y-%m-%d %H:%M:%S')
+
+    return render_template("history.html", entries=entries)
 
 
 @app.route("/login", methods=["GET", "POST"])

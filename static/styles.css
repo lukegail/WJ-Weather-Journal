@@ -1,7 +1,14 @@
+/* Custom CSS for reducing navbar height */
+.navbar-nav .nav-link {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
 
-/* Size for brand */
-nav .navbar-brand
-{
+/* If you have a brand logo or text, adjust its padding as well */
+.navbar-brand {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    line-height: normal; /* Adjust line height */
     font-size: xx-large;
 }
 
@@ -10,6 +17,39 @@ body {
     background-color: #000000; /* Dark background */
     color: #ffffff; /* Light text */
 }
+
+
+/* Table styles */ 
+table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #ffffff; /* Ensuring text in tables is also white */
+    margin-bottom: 20px; /* Add a bottom margin to create a gap between tables */
+}
+
+.entry-table td {
+    border: 1px solid #444444 !important; /* Light borders for table cells, overriding Bootstrap */
+    color: #787878 !important; /* Grey text for table cells */
+    text-align: left; /* Align text to the left */
+}
+
+/* First column specific styles */
+.entry-table td:first-child {
+    white-space: nowrap; /* Prevent wrapping in the first column */
+    width: 1%; /* Set a small width to start */
+    min-width: 100px; /* Adjust minimum width as needed */
+}
+
+/* Style for second column text */
+.entry-table td:nth-child(2) {
+    background-color: #272727; /* Set the background color to blue */
+    color: white !important; /* White color for text in the second column */
+}
+
+tr.notes-row {
+    height: auto;
+}
+
 
 
 /* #region Text Field Styles */

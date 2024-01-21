@@ -25,14 +25,15 @@
         <!-- navbar -->
         <nav class="bg-dark border navbar navbar-expand-md navbar-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/">WJ</span></a>
+                <a class="navbar-brand" href="/">WJ</a>
                 <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbar" data-bs-toggle="collapse" type="button">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="collapse navbar-collapse" id="navbar">
                     {% if session["user_id"] %}
                         <ul class="navbar-nav me-auto mt-2">
-                            <li class="nav-item"><a class="nav-link" href="/history">History</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/history">{{ username }}'s history</a></li>
                         </ul>
                         <ul class="navbar-nav ms-auto mt-2">
                             <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
@@ -56,14 +57,7 @@
             </header>
         {% endif %}
 
-        <main class="container-fluid py-5 text-center">
-            <!-- show user name and cash -->
-            <table style="border-collapse: collapse; width: 30%; margin-left: auto; margin-right: auto; margin-bottom: 20px; margin-top: -30px;">
-                <tr>
-                    <th class="text-start" style="border: 1px solid black;">User</th>
-                    <td class="text-start" style="border: 1px solid black;">{{ username }}</td>
-                </tr>
-            </table>
+        <main class="container-fluid py-3 text-center">
 
             <!-- main content -->
             {% block main %}{% endblock %}

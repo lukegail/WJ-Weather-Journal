@@ -6,31 +6,93 @@
 
 {% block main %}
 
-<table class="table">
-    <thead>
+    {% for entry in entries %}
+    <!-- templates/history.html -->
+    <table class="entry-table">
         <tr>
-            <th class="text-start">Type</th>
-            <th class="text-start">Symbol</th>
-            <th class="text-end">Shares</th>
-            <th class="text-end">Purchase Price</th>
-            <th class="text-end">Current Price</th>
-            <th class="text-end">Transacted</th>
+            <td>timestamp</td>
+            <td>{{ entry.log_time }}</td>
         </tr>
-    </thead>
-    <tbody>
-
-        {% for trade in trades %}
+        {% if entry.temp %}
         <tr>
-            <td class="text-start">{{ trade["type"] }}</td>
-            <td class="text-start">{{ trade["symbol"] }}</td>
-            <td class="text-end">{{ trade["quantity"] }}</td>
-            <td class="text-end">{{ trade["price_per_share"] }}</td>
-            <td class="text-end">{{ trade["current_price"] }}</td>
-            <td class="text-end">{{ trade["transaction_time"] }}</td>
+            <td>temperature</td>
+            <td>{{ entry.temp }} °F</td>
         </tr>
-        {% endfor %}
+        {% endif %}
+        {% if entry.wind_speed %}
+        <tr>
+            <td>wind speed</td>
+            <td>{{ entry.wind_speed }} mph</td>
+        </tr>
+        {% endif %}
+        {% if entry.wind_direction %}
+        <tr>
+            <td>wind direction</td>
+            <td>{{ entry.wind_direction }}</td>
+        </tr>
+        {% endif %}
+        {% if entry.air_notes %}
+        <tr  class="notes-row">
+            <td>air notes</td>
+            <td>{{ entry.air_notes }}</td>
+        </tr>
+        {% endif %}
+        {% if entry.humidity %}
+        <tr>
+            <td>humidity</td>
+            <td>{{ entry.humidity }} %</td>
+        </tr>
+        {% endif %}
+        {% if entry.cloud_coverage %}
+        <tr>
+            <td>cloud coverage</td>
+            <td>{{ entry.cloud_coverage }} %</td>
+        </tr>
+        {% endif %}
+        {% if entry.cloud_speed %}
+        <tr>
+            <td>cloud speed</td>
+            <td>{{ entry.cloud_speed }}</td>
+        </tr>
+        {% endif %}
+        {% if entry.cloud_direction %}
+        <tr>
+            <td>cloud direction</td>
+            <td>{{ entry.cloud_direction }}</td>
+        </tr>
+        {% endif %}
+        {% if entry.cloud_altitude %}
+        <tr>
+            <td>cloud altitude</td>
+            <td>{{ entry.cloud_altitude }}</td>
+        </tr>
+        {% endif %}
+        {% if entry.precipitation %}
+        <tr>
+            <td>precipitation</td>
+            <td>{{ entry.precipitation }}</td>
+        </tr>
+        {% endif %}
+        {% if entry.water_notes %}
+        <tr class="notes-row">
+            <td>water notes</td>
+            <td>{{ entry.water_notes }}</td>
+        </tr>
+        {% endif %}
+        {% if entry.moon_phase %}
+            <tr>
+                <td>moon phase</td>
+                <td><img src="{{ 'static/moon_images/' + (entry.moon_phase|string) + '.svg' }}" style="width:30px; height:30px;" alt="{{ entry.moon_phase }}"></td>
+            </tr>
+        {% endif %}
+        {% if entry.bio_notes %}
+        <tr class="notes-row">
+            <td>bio notes</td>
+            <td>{{ entry.bio_notes }}</td>
+        </tr>
+        {% endif %}
 
-    </tbody>
-</table>
+    </table>
+    {% endfor %}
 
 {% endblock %}
