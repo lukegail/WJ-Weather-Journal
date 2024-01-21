@@ -61,6 +61,7 @@ def index():
             'humidity': request.form.get("humidity"),
             'cloud_coverage': request.form.get("cloudCoverage"),
             'cloud_speed': request.form.get("cloudSpeed"),
+            'cloud_direction': request.form.get("cloudDirection"),
             'cloud_altitude': request.form.get("cloudAltitude"),
             'precipitation': request.form.get("precipitation"),
             'water_notes': request.form.get("waterNotes"),
@@ -70,7 +71,7 @@ def index():
 
         valid_directions = {'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW', 'N', 'NNE', 'NE', 'ENE'}
         valid_cloud_speeds = {'still', 'slow', 'med', 'fast'}
-        valid_cloud_altitudes = {'low', 'med', 'high'}
+        valid_cloud_altitudes = {'low', 'med', 'high', 'very_high'}
         valid_precipitations = {'fog', 'rain (barely)', 'rain (light)', 'rain (moderate)', 'rain (heavy)', 'sleet', 'hail', 'snow (light)', 'snow (moderate)', 'snow (heavy)'}
     
         # validate and convert
@@ -100,51 +101,35 @@ def index():
                 elif field == 'cloud_speed' and value not in valid_cloud_speeds:
                     return apology(f"Invalid input for {field}", 400)
                 
+                elif field == 'cloud_direction' and value not in valid_directions:
+                    return apology(f"Invalid input for {field}", 400)
+                
                 elif field == 'cloud_altitude' and value not in valid_cloud_altitudes:
                     return apology(f"Invalid input for {field}", 400)
                 
                 elif field == 'precipitation' and value not in valid_precipitations:
                     return apology(f"Invalid input for {field}", 400)
                 
+        for key in form_data:
+            # Check if the value is an empty string or the string "NULL"
+            if form_data[key] == "" or form_data[key] == "NULL":
+                form_data[key] = None  # Set the value to None
+
+        # insert new record into weather table
+        db.execute("INSERT INTO weather_entries (user_id, temp, wind_speed, wind_direction, air_notes, humidity, cloud_coverage, cloud_speed, cloud_direction, cloud_altitude, precipitation, water_notes, moon_phase, bio_notes) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",             
+            session["user_id"], form_data['temp'], form_data['wind_speed'], 
+            form_data['wind_direction'], form_data['air_notes'], form_data['humidity'], 
+            form_data['cloud_coverage'], form_data['cloud_speed'], form_data['cloud_direction'], 
+            form_data['cloud_altitude'], form_data['precipitation'], form_data['water_notes'], 
+            form_data['moon_phase'], form_data['bio_notes']       
+        )
         
-
-
-
+        return redirect("/")
     
     else:    
         return render_template("index.html")
 
 
-
-
-
-
-""" @app.route("/quote", methods=["GET", "POST"])
-@login_required
-def quote():
-    
-
-    if request.method == "POST":
-        # get username and password from registration form
-        symbol = request.form.get("symbol").upper()
-
-        # Ensure username was submitted
-        if not symbol:
-            return apology("must provide symbol", 400)
-
-        # get quote info (dict) for symbol,
-        quote_info = lookup(symbol)
-
-        # apology if a lookup error occurs or the symbol is invalid (lookup will return None)
-        if not quote_info:
-            return apology("stock quote error", 400)
-
-        # formats latest stock price as $usd.00
-        price = usd(quote_info["price"])
-
-        return render_template("quoted.html", symbol=symbol, price=price)
-    else:
-        return render_template("quote.html")"""
 
 
 

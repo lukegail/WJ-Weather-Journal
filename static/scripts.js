@@ -29,80 +29,108 @@
 }
 
 {   // Slider Toggle and Value Update: Humidity
-    const humidityVisibleToggle = document.getElementById('humidityVisibleToggle');
-    const humidityContainer = document.getElementById('humidityContainer');
-    const humiditySlider = document.getElementById('humidity');
-    const humidityValue = document.getElementById('humidityValue');
-
-    humidityVisibleToggle.addEventListener('change', function() {
-        if (this.checked) {
-            humidityContainer.style.display = 'block'; // Adjust to inline for a single line
-            humidityValueContainer.style.display = 'block'; // Show value
-            humiditySlider.disabled = false;
-        } else {
-            humidityContainer.style.display = 'none';
-            humidityValueContainer.style.display = 'none'; // Hide value
-            humiditySlider.disabled = true;
-            humiditySlider.value = '0';
-            humidityValue.textContent = '0%'; // Reset the value with '%' sign
+    document.addEventListener('DOMContentLoaded', function() {
+        // Slider Toggle and Value Update: Humidity
+        const humidityVisibleToggle = document.getElementById('humidityVisibleToggle');
+        const humidityContainer = document.getElementById('humidityContainer');
+        const humiditySlider = document.getElementById('humidity');
+        const humidityValue = document.getElementById('humidityValue');
+        const humidityValueContainer = document.getElementById('humidityValueContainer'); // Ensure this is the correct ID
+    
+        humidityVisibleToggle.addEventListener('change', function() {
+            if (this.checked) {
+                humidityContainer.style.display = 'block'; // Adjust to inline for a single line
+                humidityValueContainer.style.display = 'block'; // Show value
+                humiditySlider.disabled = false;
+                humiditySlider.setAttribute('name', 'humidity'); // Add name attribute when checked
+            } else {
+                humidityContainer.style.display = 'none';
+                humidityValueContainer.style.display = 'none'; // Hide value
+                humiditySlider.disabled = true;
+                humiditySlider.value = '0';
+                humidityValue.textContent = '0%'; // Reset the value with '%' sign
+                humiditySlider.removeAttribute('name'); // Remove name attribute when unchecked
+            }
+        });
+    
+        humiditySlider.oninput = function() {
+            humidityValue.textContent = this.value + '%'; // Update the value with '%' sign
         }
+    
+        // Dispatch 'change' event to set initial state
+        humidityVisibleToggle.dispatchEvent(new Event('change'));
     });
-
-    humiditySlider.oninput = function() {
-        humidityValue.textContent = this.value + '%'; // Update the value with '%' sign
-    }
+    
 }
 
 {   // Slider Toggle and Value Update: Cloud Coverage
-    const cloudCoverageVisibleToggle = document.getElementById('cloudCoverageVisibleToggle');
-    const cloudCoverageContainer = document.getElementById('cloudCoverageContainer');
-    const cloudCoverageSlider = document.getElementById('cloudCoverage');
-    const cloudCoverageValue = document.getElementById('cloudCoverageValue');
-
-    cloudCoverageVisibleToggle.addEventListener('change', function() {
-        if (this.checked) {
-            cloudCoverageContainer.style.display = 'block';
-            cloudCoverageValueContainer.style.display = 'block'; // Adjust to inline for a single line
-            cloudCoverageSlider.disabled = false;
-        } else {
-            cloudCoverageContainer.style.display = 'none';
-            cloudCoverageValueContainer.style.display = 'none';
-            cloudCoverageSlider.disabled = true;
-            cloudCoverageSlider.value = '0';
-            cloudCoverageValue.textContent = '0%'; // Reset the value with '%' sign
-        }
+    document.addEventListener('DOMContentLoaded', function() {
+        // Slider Toggle and Value Update: Cloud Coverage
+        const cloudCoverageVisibleToggle = document.getElementById('cloudCoverageVisibleToggle');
+        const cloudCoverageContainer = document.getElementById('cloudCoverageContainer');
+        const cloudCoverageSlider = document.getElementById('cloudCoverage');
+        const cloudCoverageValue = document.getElementById('cloudCoverageValue');
+        const cloudCoverageValueContainer = document.getElementById('cloudCoverageValueContainer'); // Ensure this is the correct ID
+    
+        cloudCoverageVisibleToggle.addEventListener('change', function() {
+            if (this.checked) {
+                cloudCoverageContainer.style.display = 'block';
+                cloudCoverageValueContainer.style.display = 'block'; // Adjust to inline for a single line
+                cloudCoverageSlider.disabled = false;
+                cloudCoverageSlider.setAttribute('name', 'cloudCoverage'); // Add name attribute when checked
+            } else {
+                cloudCoverageContainer.style.display = 'none';
+                cloudCoverageValueContainer.style.display = 'none';
+                cloudCoverageSlider.disabled = true;
+                cloudCoverageSlider.value = '0';
+                cloudCoverageValue.textContent = '0%'; // Reset the value with '%' sign
+                cloudCoverageSlider.removeAttribute('name'); // Remove name attribute when unchecked
+            }
+        });
+    
+        cloudCoverageSlider.oninput = function() {
+            cloudCoverageValue.textContent = this.value + '%'; // Update the value with '%' sign
+        };
+    
+        // Dispatch 'change' event to set initial state
+        cloudCoverageVisibleToggle.dispatchEvent(new Event('change'));
     });
-
-    cloudCoverageSlider.oninput = function() {
-        cloudCoverageValue.textContent = this.value + '%'; // Update the value with '%' sign
-    }
+    
 }
 
 {   // Slider Toggle and Value Update: Moon Phase
-    const moonPhaseVisibleToggle = document.getElementById('moonPhaseVisibleToggle');
-    const moonPhaseSlider = document.getElementById('moonPhaseSlider');
-    const moonImagePlaceholder = document.querySelector('.moonImagePlaceholder'); // Reference to the placeholder
-
-    moonPhaseVisibleToggle.addEventListener('change', function() {
-        const moonPhaseFlexContainer = document.querySelector('.moonPhaseFlexContainer');
-        if (this.checked) {
-            moonPhaseFlexContainer.style.display = 'flex'; // Show the flex container
-            moonPhaseLabel.style.display = 'none'; // Hide the label
-            moonPhaseImage.style.display = 'block'; // Show the image
-            moonImagePlaceholder.style.display = 'none'; // Hide the placeholder when the image is visible
-            moonPhaseSlider.disabled = false;
-        } else {
-            moonPhaseFlexContainer.style.display = 'none'; // Hide the flex container
-            moonPhaseLabel.style.display = 'block'; // Show the label
-            moonPhaseImage.style.display = 'none'; // Hide the image
-            moonImagePlaceholder.style.display = 'block'; // Show the placeholder when the image is hidden
-            moonPhaseSlider.disabled = true;
-        }
+    document.addEventListener('DOMContentLoaded', function() {
+        const moonPhaseVisibleToggle = document.getElementById('moonPhaseVisibleToggle');
+        const moonPhaseSlider = document.getElementById('moonPhaseSlider');
+        const moonImagePlaceholder = document.querySelector('.moonImagePlaceholder'); // Reference to the placeholder
+    
+        moonPhaseVisibleToggle.addEventListener('change', function() {
+            const moonPhaseFlexContainer = document.querySelector('.moonPhaseFlexContainer');
+            if (this.checked) {
+                moonPhaseFlexContainer.style.display = 'flex'; // Show the flex container
+                moonPhaseLabel.style.display = 'none'; // Hide the label
+                moonPhaseImage.style.display = 'block'; // Show the image
+                moonImagePlaceholder.style.display = 'none'; // Hide the placeholder when the image is visible
+                moonPhaseSlider.disabled = false;
+                moonPhaseSlider.setAttribute('name', 'moonPhase'); // Add name attribute when checked
+            } else {
+                moonPhaseFlexContainer.style.display = 'none'; // Hide the flex container
+                moonPhaseLabel.style.display = 'block'; // Show the label
+                moonPhaseImage.style.display = 'none'; // Hide the image
+                moonImagePlaceholder.style.display = 'block'; // Show the placeholder when the image is hidden
+                moonPhaseSlider.disabled = true;
+                moonPhaseSlider.removeAttribute('name'); // Remove name attribute when unchecked
+            }
+        });
+    
+        moonPhaseSlider.oninput = function() {
+            document.getElementById('moonPhaseImage').src = `/static/moon_images/${this.value}.svg`;
+        };
+    
+        // Dispatch 'change' event to set initial state
+        moonPhaseVisibleToggle.dispatchEvent(new Event('change'));
     });
-
-    moonPhaseSlider.oninput = function() {
-        document.getElementById('moonPhaseImage').src = `/static/moon_images/${this.value}.svg`;
-    }
+    
 }
 
 {   // 'notes' textarea auto expand
