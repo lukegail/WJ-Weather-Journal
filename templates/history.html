@@ -1,3 +1,10 @@
+<!-- 
+    Template: history
+    Purpose: Displays a historical log of the user's weather journal entries. 
+    Each entry can contain various data points, such as temperature, wind speed, and humidity.
+    The {% if entry.temp %} syntax is used to ensure that the data is only displayed if it exists.
+-->
+
 {% extends "layout.html" %}
 
 {% block title %}
@@ -82,6 +89,7 @@
         {% if entry.moon_phase %}
             <tr>
                 <td>moon phase</td>
+                <!-- moon phase images are dynamically generated from the 'moon_phase' field in the database. -->
                 <td><img src="{{ 'static/moon_images/' + (entry.moon_phase|string) + '.svg' }}" style="width:30px; height:30px;" alt="{{ entry.moon_phase }}"></td>
             </tr>
         {% endif %}

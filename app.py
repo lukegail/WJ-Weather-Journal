@@ -16,6 +16,8 @@ app = Flask(__name__)
 # Configure session to use filesystem (instead of signed cookies)
 # configures Flask to store sessions on the local filesystem (i.e., disk)
 # as opposed to storing them inside of (digitally signed) cookies, which is Flask’s default.
+# Filesystem sessions are chosen for enhanced security and data storage capabilities, suitable for educational projects where ease of setup and understanding are key.
+# Cookie-based sessions, Flask’s default, are better for scalability and performance in production environments, especially when dealing with stateless, distributed systems.
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)

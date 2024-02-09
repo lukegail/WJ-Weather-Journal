@@ -1,19 +1,34 @@
+<!--
+    Template: Weather Journal Application Layout
+    Purpose: This Jinja template serves as the base layout for the weather journal application, integrating Bootstrap for responsive design and custom styling for a cohesive user interface.
+    Features:
+        - Responsive navbar with dynamic links for user authentication states (login/register or user-specific content).
+        - Dynamic title block allowing for page-specific titles while maintaining a consistent base title format.
+        - Main content area defined by a 'main' block for embedding page-specific content within the unified layout structure.
+    Dependencies: Bootstrap 5.3.2 for CSS and JavaScript components, custom CSS and JavaScript for specific styling and functionality.
+-->
+
 <!DOCTYPE html>
 
 <html lang="en">
 
     <head>
 
+        <!-- character encoding -->
         <meta charset="utf-8">
+        <!-- Ensures proper rendering and touch zooming for mobile devices -->
         <meta name="viewport" content="initial-scale=1, width=device-width">
 
         <!-- https://getbootstrap.com/  5.3.2 -->
+        <!-- bootstrap css -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <!-- bootstrap js -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
-        <!-- https://www.flaticon.com/free-icon/clouds-and-sun_9231625 -->
+        <!-- favicon for the website tab icon https://www.flaticon.com/free-icon/clouds-and-sun_9231625 -->
         <link href="/static/favicon.png" rel="icon" type="image/png">
 
+        <!-- css -->
         <link href="/static/styles.css" rel="stylesheet">
 
         <title>WJ{% block title %}{% endblock %}</title>
@@ -22,16 +37,19 @@
 
     <body>
 
-        <!-- navbar -->
+        <!-- navbar styled with boostrap classes -->
         <nav class="bg-dark border navbar navbar-expand-md navbar-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/">WJ</a>
+                <!-- Toggler 'hamburgerbutton for smaller screens with accessibility attributes -->
                 <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbar" data-bs-toggle="collapse" type="button">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbar">
+                    <!-- Show user-specific links if logged in ('user_id' in session), else show login/register -->
                     {% if session["user_id"] %}
+                        <!-- Links displayed to logged-in users, showing personalized content and logout option -->
                         <ul class="navbar-nav me-auto mt-2">
                             <li class="nav-item"><a class="nav-link" href="/history">{{ username }}'s history</a></li>
                         </ul>
@@ -39,6 +57,7 @@
                             <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
                         </ul>
                     {% else %}
+                        <!-- Links displayed to guests, offering options to register or log in -->
                         <ul class="navbar-nav ms-auto mt-2">
                             <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
                             <li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>
@@ -48,21 +67,13 @@
             </div>
         </nav>
 
-        <!-- unused: flash messages -->
-        {% if get_flashed_messages() %}
-            <header>
-                <div class="alert alert-primary mb-0 text-center" role="alert">
-                    {{ get_flashed_messages() | join(" ") }}
-                </div>
-            </header>
-        {% endif %}
-
         <main class="container-fluid py-3 text-center">
 
             <!-- main content -->
             {% block main %}{% endblock %}
         </main>
-    
+
+        <!-- javascript -->
         <script src="/static/scripts.js"></script>
 
     </body>
