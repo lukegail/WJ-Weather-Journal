@@ -1,7 +1,11 @@
+from dotenv import load_dotenv
+load_dotenv()  # load environment variables from .env
+
+import os
 import pytz
 
 from cs50 import SQL
-from datetime import datetime
+from datetime import datetime, timedelta
 from flask import Flask, redirect, render_template, request, session
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -11,17 +15,12 @@ from helpers import apology, login_required
 # Configure application
 app = Flask(__name__)
 
-# app.debug = True    currently using flask run --debug instead of app.debug = True
+# set secret key for session [Set in .env (development) or PythonAnywhere environment variables (production)]
+app.secret_key = os.environ.get("SECRET_KEY")
 
-# Configure session to use filesystem (instead of signed cookies)
-# configures Flask to store sessions on the local filesystem (i.e., disk)
-# as opposed to storing them inside of (digitally signed) cookies, which is Flask’s default.
-# Filesystem sessions are chosen for enhanced security and data storage capabilities, suitable for educational projects where ease of setup and understanding are key.
-# Cookie-based sessions, Flask’s default, are better for scalability and performance in production environments, especially when dealing with stateless, distributed systems.
-app.config["SESSION_PERMANENT"] = False
-app.config["SESSION_TYPE"] = "filesystem"
-Session(app)
-
+# Optional: Configure the session to be permanent and set its lifetime
+app.config["SESSION_PERMANENT"] = True
+app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(days=30) # hardcoding lifetime because i'm trying to keep it simple vs using environment variables, which would require me to delete the hardcoded lifetime for development.
 
 # Configure CS50 Library to use SQLite database
 db = SQL("sqlite:///weather.db")
@@ -141,7 +140,7 @@ def history():
         return redirect("/history")
     
     else:
-        entries = db.execute("SELECT * FROM weather_entries WHERE user_id = ? ORDER BY log_time", session["user_id"])
+        entries = db.execute("SELECT * FROM weather_entries WHERE user_id = ? ORDER BY log_time DESC", session["user_id"])
 
         for entry in entries:
             # Assuming 'log_time' is a string in ISO format, e.g., "2022-01-01T12:00:00"
