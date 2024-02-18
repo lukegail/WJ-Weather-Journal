@@ -1,38 +1,29 @@
-import csv
-import datetime
-import requests
-import subprocess
-import urllib
-import uuid
-
 from flask import redirect, render_template, session
 from functools import wraps
 
 
 def apology(message, code=400):
-    """Render message as an apology to user."""
+    """ Renders an apology to the user (apology text, optional code)
+    Returns: (template, code) """
     def escape(s):
-        """
-        Escape special characters.
-
+        """ Escapes special characters for safe HTML (prevents XSS).
+        Returns: escaped string
         https://github.com/jacebrowning/memegen#special-characters
         """
-        for old, new in [("-", "--"), (" ", "-"), ("_", "__"), ("?", "~q"),
-                         ("%", "~p"), ("#", "~h"), ("/", "~s"), ("\"", "''")]:
+        for old, new in [("-", "--"), (" ", "-"), ("_", "__"), ("?", "~q"), ("%", "~p"), ("#", "~h"), ("/", "~s"), ("\"", "''")]:
             s = s.replace(old, new)
         return s
     return render_template("apology.html", top=code, bottom=escape(message)), code
 
 
 def login_required(f):
-    """
-    Decorate routes to require login.
-
+    """ Decorator to enforce user login for protected routes.
+    If a user is not logged in (no 'user_id' in session), redirects to the login page.
     http://flask.pocoo.org/docs/0.12/patterns/viewdecorators/
     """
-    @wraps(f)
+    @wraps(f)  # Preserve the original function's metadata
     def decorated_function(*args, **kwargs):
-        if session.get("user_id") is None:
-            return redirect("/login")
-        return f(*args, **kwargs)
-    return decorated_function
+        if session.get("user_id") is None:  # Check if user is not logged in.
+            return redirect("/login")  # Redirect to login page if not logged in.
+        return f(*args, **kwargs)  # Call the original function if logged in.
+    return decorated_function  # Return the wrapped function.
