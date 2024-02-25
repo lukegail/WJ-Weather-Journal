@@ -1,4 +1,9 @@
 # WJ Weather Journal
+
+## CS50 Final Project
+####
+This project was developed as my final project for Harvard University's CS50x, an introduction to computer science.
+
 #### Video Demo:  https://youtu.be/tK0F-RNwDUg
 
 ## Overview
